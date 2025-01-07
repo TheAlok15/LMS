@@ -16,6 +16,7 @@ export const generateToken = async function(res,user, message){
   } 
   catch (error) 
   {
+    console.log("error in middleware");
     
   }
 }

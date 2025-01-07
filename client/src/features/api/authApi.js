@@ -25,7 +25,7 @@ export const authApi = createApi({
           // 3.2) mutation ke andr query lenge fir isme bhi callback fun with object lenge isme signupData dalenge kuki yaha signup ka hi data milega isiliye tum kuch bhi daal skte ho
           url:"signup", // 3.2.1) ye jo api mai chipkega
           method:"POST", // 3.2.2) ye hogya method
-          body:signupData // 3.2.3) ye aagay data jo dalega user
+          body:signupData // 3.2.3) ye aagya data jo dalega user
         })
       }),
       signinUser:builder.mutation({

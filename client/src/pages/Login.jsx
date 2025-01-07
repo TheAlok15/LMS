@@ -33,6 +33,7 @@ export default function Login() {
       const {name, value} = e.target;
       if(type === "signup"){
         setSignupInfo({...signupInfo,[name]:value});
+        // setSignupInfo({...signupInfo,[e.target.name]:e.target.value});
       }
       else{
         setSigninInfo({...signinInfo,[name]:value});
@@ -41,9 +42,6 @@ export default function Login() {
 
   const handleRegister = async (type) =>{
     const inputData = type === "signup" ? signupInfo : signinInfo
-    // console.log(signupInfo);
-    // console.log(loginInfo);
-    // console.log(inputData);
     const action = type === "signup" ? signupUser : signinUser 
     await action(inputData);
   }
@@ -53,19 +51,17 @@ export default function Login() {
       toast.success(signupData.message || "Signup successfully")
     }
 
-    if(signupError)
-    {
-      toast.error(signupData.data.essage || "Signup failed")
+    if(signupError){
+      toast.error(signupData.data.message || "Signup failed")
     }
 
     if(signinIsSuccess && signinData){
       toast.success(signinData.message || "Signin successfully")
     }
 
-    if(signinError)
-      {
-        toast.error(signinData.data.essage || "Signin failed")
-      }
+    if(signinError) {
+        toast.error(signinData.data.message || "Signin failed")
+    }
 
   },[signupIsLoading, signinIsLoading, signupData, signinData, signupError, signinError])
   
@@ -129,7 +125,7 @@ export default function Login() {
           <CardFooter>
           <Button disabled = {signupIsLoading} onClick ={() => handleRegister("signup")}  style={{width:"100%"}}>
               {
-                signupIsLoading ?(
+                signupIsLoading ? (
                   <>
                     <Loader2 className="mr-2 h-4 w-4 animate-spin"/> Please wait
                   </>
